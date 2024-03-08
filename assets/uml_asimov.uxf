@@ -1,0 +1,67 @@
+<diagram program="umletino" version="15.1"><zoom_level>9</zoom_level><element><id>UMLClass</id><coordinates><x>288</x><y>36</y><w>189</w><h>117</h></coordinates><panel_attributes>Scolarite
+--
+- id_scolarite : int
+- nom_classe : string
+- numero_semestre : int
+- moyenne_semestre : float
+- annee_scolaire : date
+- id_eleve : int</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>171</x><y>198</y><w>189</w><h>63</h></coordinates><panel_attributes>Equipe_projet
+--
+- id_equipe : int
+- id_projet : int
+- id_eleve : int</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>612</x><y>549</y><w>189</w><h>90</h></coordinates><panel_attributes>Personnel
+--
+- id_personnel : int
+- nom : string
+- prenom : string
+- id_role : int</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>315</x><y>630</y><w>189</w><h>126</h></coordinates><panel_attributes>Projet
+--
+- id_projet : int
+- nom_projet : string
+- description_projet : string
+- date_debut : date
+- date_fin : date
+- id_responsable_projet : int
+- est_valide : bool</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>945</x><y>189</y><w>189</w><h>162</h></coordinates><panel_attributes>Recherche_Stage
+--
+- id : int
+- id_eleve : int
+- nom_entreprise : string
+- mail_entreprise : string
+- tel_entreprise : string
+- nb_lettre : int
+- date_entretien : date
+- est_signe : bool
+- attestation : blob
+- convention : blob</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>594</x><y>207</y><w>189</w><h>117</h></coordinates><panel_attributes>Eleve
+--
+- id : int
+- nom : string
+- prenom : string
+- date_naissance : date
+- classe_actuelle : string
+- id_responsable_prof : int</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>945</x><y>558</y><w>189</w><h>63</h></coordinates><panel_attributes>Role
+--
+- id_role : int
+- libelle_role : string</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>468</x><y>117</y><w>144</w><h>135</h></coordinates><panel_attributes>lt=-
+m1=0..*
+m2=1
+</panel_attributes><additional_attributes>10;10;140;130</additional_attributes></element><element><id>Relation</id><coordinates><x>774</x><y>216</y><w>189</w><h>45</h></coordinates><panel_attributes>lt=-
+m1=1
+m2=0..*
+</panel_attributes><additional_attributes>10;20;190;20</additional_attributes></element><element><id>Relation</id><coordinates><x>351</x><y>234</y><w>261</w><h>45</h></coordinates><panel_attributes>lt=-
+m1=0..*
+m2=1..*
+</panel_attributes><additional_attributes>10;20;270;20</additional_attributes></element><element><id>Relation</id><coordinates><x>288</x><y>252</y><w>81</w><h>396</h></coordinates><panel_attributes>lt=-
+m1=1
+m2=0..*
+</panel_attributes><additional_attributes>10;10;50;420</additional_attributes></element><element><id>Relation</id><coordinates><x>414</x><y>315</y><w>234</w><h>333</h></coordinates><panel_attributes>lt=-
+m1=0..*
+m2=1
+</panel_attributes><additional_attributes>10;350;240;10</additional_attributes></element><element><id>Relation</id><coordinates><x>693</x><y>315</y><w>45</w><h>252</h></coordinates><panel_attributes>lt=-
+m1=0..*
+m2=1
+</panel_attributes><additional_attributes>10;10;10;260</additional_attributes></element><element><id>Relation</id><coordinates><x>792</x><y>558</y><w>171</w><h>45</h></coordinates><panel_attributes>lt=-
+m1=0..*
+m2=1
+</panel_attributes><additional_attributes>10;20;170;20</additional_attributes></element></diagram>
