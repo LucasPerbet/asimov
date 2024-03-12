@@ -1,4 +1,6 @@
-CREATE DATABASE IF NOT EXISTS asimov
+CREATE DATABASE IF NOT EXISTS asimov;
+
+USE asimov;
 
 CREATE TABLE `Eleve` (
   `id_eleve` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -22,26 +24,44 @@ CREATE TABLE `Scolarite` (
   `nom_classe` VARCHAR(255) NOT NULL,
   `numero_semestre` BIGINT NOT NULL,
   `moyenne_semestre` FLOAT NOT NULL,
-  `annee_scolaire` DATE NOT NULL
+  `annee_scolaire` DATE NOT NULL,
+  `id_eleve` BIGINT UNSIGNED NOT NULL,
+  FOREIGN KEY (`id_eleve`) REFERENCES `Eleve`(`id_eleve`)
 );
 
 CREATE TABLE `Personnel` (
   `id_personnel` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `nom` VARCHAR(255) NOT NULL,
-  `prenom` VARCHAR(255) NOT NULL
+  `prenom` VARCHAR(255) NOT NULL,
+  `id_role` BIGINT UNSIGNED NOT NULL,
+  FOREIGN KEY (`id_role`) REFERENCES `Role`(`id_role`)
 );
 
-CREATE TABLE `Recherche_Stage` (
-  `id_recherche_stage` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  `id_eleve` BIGINT UNSigned NOT NULL,
+CREATE TABLE `Stage` (
+  `id_stage` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `id_eleve` BIGINT UNSIGNED NOT NULL,
   `nom_entreprise` VARCHAR(255) NOT NULL,
+  `adresse_entreprise` VARCHAR(255) NOT NULL,
   `mail_entreprise` VARCHAR(255) NOT NULL,
   `tel_entreprise` VARCHAR(255) NOT NULL,
   `nb_lettre` BIGINT NOT NULL,
   `date_entretien` DATE NULL,
-  `estsigne` TINYINT(1) NOT NULL,
+  `estvalide` TINYINT(1) NOT NULL,
   `attestation` BLOB NULL,
-  `convention` BLOB NULL
+  `convention` BLOB NULL,
+  FOREIGN KEY (`id_eleve`) REFERENCES `Eleve`(`id_eleve`)
+);
+
+CREATE TABLE `Recherche_Stage` (
+  `id_recherche_stage` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `id_eleve` BIGINT UNSIGNED NOT NULL,
+  `nom_entreprise` VARCHAR(255) NOT NULL,
+  `adresse_entreprise` VARCHAR(255) NOT NULL,
+  `mail_entreprise` VARCHAR(255) NOT NULL,
+  `tel_entreprise` VARCHAR(255) NOT NULL,
+  `nb_lettre` BIGINT NOT NULL,
+  `date_entretien` DATE NULL,
+  FOREIGN KEY (`id_eleve`) REFERENCES `Eleve`(`id_eleve`)
 );
 
 CREATE TABLE `Role` (
@@ -52,34 +72,16 @@ CREATE TABLE `Role` (
 CREATE TABLE `Equipe_Projet` (
   `id_equipe` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `id_projet` BIGINT UNSIGNED NOT NULL,
-  `id_eleve` BIGINT UNSIGNED NOT NULL
+  `id_eleve` BIGINT UNSIGNED NOT NULL,
+  FOREIGN KEY (`id_projet`) REFERENCES `Projet`(`id_projet`),
+  FOREIGN KEY (`id_eleve`) REFERENCES `Eleve`(`id_eleve`)
 );
-
 
 ALTER TABLE `Projet`
   ADD CONSTRAINT `projet_id_responsableprojet_foreign`
   FOREIGN KEY (`id_responsableprojet`) REFERENCES `Eleve`(`id_eleve`);
 
-ALTER TABLE `Eleve`
-  ADD CONSTRAINT `eleve_id_responsableprof_foreign`
-  FOREIGN KEY (`id_responsableprof`) REFERENCES `Personnel`(`id_personnel`);
-
-ALTER TABLE `Equipe_Projet`
-  ADD CONSTRAINT `equipe_projet_id_projet_foreign`
-  FOREIGN KEY (`id_projet`) REFERENCES `Projet`(`id_projet`);
-
-ALTER TABLE `Scolarite`
-  ADD CONSTRAINT `scolarite_id_eleve_foreign`
-  FOREIGN KEY (`id_eleve`) REFERENCES `Eleve`(`id_eleve`);
-
-ALTER TABLE `Equipe_Projet`
-  ADD CONSTRAINT `equipe_projet_id_eleve_foreign`
-  FOREIGN KEY (`id_eleve`) REFERENCES `Eleve`(`id_eleve`);
-
 ALTER TABLE `Personnel`
   ADD CONSTRAINT `personnel_id_role_foreign`
   FOREIGN KEY (`id_role`) REFERENCES `Role`(`id_role`);
 
-ALTER TABLE `Recherche_Stage`
-  ADD CONSTRAINT `recherche_stage_id_eleve_foreign`
-  FOREIGN KEY (`id_eleve`) REFERENCES `Eleve`(`id_eleve`);
