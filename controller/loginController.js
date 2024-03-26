@@ -17,9 +17,32 @@ const loginController = {
 
                 // Récupérer l'id du rôle de l'utilisateur
                 console.log(utilisateur)
-             
+                let vueAccueil;
+
+                switch(utilisateur.id_role) {
+                    case 1:
+                        vueAccueil = "accueilProviseur";
+                    break;
+
+                    case 2:
+                        vueAccueil = "accueilEnseignant";
+                    break;
+
+                    case 3:
+                        vueAccueil = "accueilSecretariat";
+                    break;
+
+                    case 4:
+                        vueAccueil = "accueilEleve";
+                    break;
+
+                    default:
+                        console.log("Erreur")
+
+
+                }
                 // On render la vue en fonction du role, et transmet les parametres que l'on souhaite
-                res.render('accueil', { nom: utilisateur.nom, prenom: utilisateur.prenom,  role: utilisateur.libelle_role}); 
+                res.render(vueAccueil, { nom: utilisateur.nom, prenom: utilisateur.prenom,  role: utilisateur.libelle_role}); 
             } else {
                 res.send("Identifiant ou mot de passe incorrect.");
             }
