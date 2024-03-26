@@ -15,6 +15,7 @@ app.set('views', [path.join(__dirname, '/views'),path.join(__dirname,
     '/views/eleves/'), path.join(__dirname, '/views/proviseur/'), path.join(__dirname, '/views/secretariat/'), path.join(__dirname, '/views/enseignant/'), path.join(__dirname, '/views/default/')]);
 
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use('/css', express.static(__dirname + '/public/css'));
 
 
 // configuration des routes
