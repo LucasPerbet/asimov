@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scolarité de l'enseignant</title>
+</head>
+<body>
+    <h1>Bienvenue, <%= userId %></h1>
+    
+    <h2>Liste des élèves :</h2>
+    <table border="1">
+        <tr>
+            <th>ID élève</th>
+            <th>Nom</th>
+            <th>Prénom</th>
+            <th>Date de naissance</th>
+    
+        </tr>
+        <% eleve.forEach(function(eleveItem) { %>
+            <tr>
+                <td><%= eleveItem.id_utilisateur %></td>
+                <td><%= eleveItem.nom %></td>
+                <td><%= eleveItem.prenom %></td>
+                <td><%= eleveItem.date_naissance %></td>
+
+            </tr>
+        <% }); %>
+    </table>
+
+
+    <h2>Séléctionnez un élève pour afficher ses moyennes :</h2>
+    <select id="selectEleve" name="eleve" onchange="envoyerValeur()">
+        <% for (var i = 0; i < eleve.length; i++) { %>
+          <option value="<%= eleve[i].id_utilisateur %>"><%= eleve[i].nom %></option>
+        <% } %>
+      </select>
+      
+  <script>
+    function envoyerValeur() {
+        const selectElement = document.getElementById("selectEleve");
+        const selectedValue = selectElement.value;
+
+        return selectedValue;
+    }
+
+    const valeurEleve = envoyerValeur;
+
+  </script>   
+</body>
+</html>
