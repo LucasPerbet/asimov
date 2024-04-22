@@ -7,7 +7,6 @@ const loginController = {
         res.render('login');
     },
 
-
     // Fonction qui effectue l'opération de connexion, et redirige vers la vue en fonction du rôle de l'utilisateur
     async login(req, res) {
         try {
@@ -15,8 +14,9 @@ const loginController = {
             const utilisateur = await loginModel.getUtilisateurByLogin(id_utilisateur, mdp);
             if (utilisateur) {
 
-                // Récupérer l'id du rôle de l'utilisateur
-                console.log(utilisateur)
+                // Stocker l'ID de l'utilisateur dans la session
+                req.session.userId = utilisateur.id_utilisateur;
+
                 let vueAccueil;
 
                 switch(utilisateur.id_role) {
@@ -38,8 +38,6 @@ const loginController = {
 
                     default:
                         console.log("Erreur")
-
-
                 }
                 // On render la vue en fonction du role, et transmet les parametres que l'on souhaite
                 res.render(vueAccueil, { nom: utilisateur.nom, prenom: utilisateur.prenom,  role: utilisateur.libelle_role}); 

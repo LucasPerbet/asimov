@@ -1,7 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path'); // Import the path module
-
+const session = require('express-session');
 const app = express();
 
 // configuration de EJS comme moteur de template
@@ -16,7 +16,11 @@ app.set('views', [path.join(__dirname, '/views'),path.join(__dirname,
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use('/css', express.static(__dirname + '/public/css'));
-
+app.use(session({
+    secret: 'secret',
+    resave: false,
+    saveUninitialized: true
+}));
 
 // configuration des routes
 const loginRoute = require('./routes/loginRoute');
@@ -27,6 +31,7 @@ const stageRoute = require('./routes/stageRoute');
 app.use('/', loginRoute);
 app.use('/', scolariteRoute);
 app.use('/', stageRoute);
+
 
 
 
