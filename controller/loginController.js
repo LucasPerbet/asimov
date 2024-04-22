@@ -16,6 +16,7 @@ const loginController = {
 
                 // Stocker l'ID de l'utilisateur dans la session
                 req.session.userId = utilisateur.id_utilisateur;
+                req.session.role = utilisateur.id_role;
 
                 let vueAccueil;
 

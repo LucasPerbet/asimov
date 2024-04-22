@@ -17,6 +17,7 @@ const scolariteController = {
             res.status(500).send("Une erreur s'est produite lors du chargement de la page de la scolarité.");
         }
     },
+    
 
     
 };
