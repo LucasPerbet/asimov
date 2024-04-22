@@ -1,7 +1,6 @@
 const scolariteModel = require('../model/enseignantScolariteModel');
 
-const scolariteController = {
-
+const enseignantScolariteController = {
     // Fonction qui affiche la vue de la scolarite
     async renderListeEleve(req, res) {
         try {
@@ -16,9 +15,17 @@ const scolariteController = {
         }
     },
 
+    // Fonction pour récupérer les données de scolarité d'un élève
+    async getScolariteByIdEleve(req, res) {
+        try {
+            const eleveId = req.query.id_utilisateur;
+            const scolariteData = await scolariteModel.getScolariteByIdEleve(eleveId);
+            console.log(scolariteData);
+        } catch (error) {
+            console.error(error);
+            res.status(500).send("Une erreur s'est produite lors de la récupération des données de scolarité.");
+        }
+    }
 };
 
-
-
-
-module.exports = scolariteController;
+module.exports = enseignantScolariteController;

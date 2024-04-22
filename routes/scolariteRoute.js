@@ -33,6 +33,10 @@ router.get('/scolarite', (req, res, next) => {
             res.status(403).send("Accès interdit.");
     }
 }),
+
+// Route pour récupérer les données de scolarité d'un élève
+router.get('/recupererDonneesScolarite', enseignantController.getScolariteByIdEleve);
+
 router.use(logoutRoute);
 
 

@@ -11,8 +11,18 @@ async function getEleveByUserId(userId) {
     }
 }
 
+async function getScolariteByIdEleve(eleveId) {
+    try {
+        const sql = "SELECT * FROM scolarite WHERE id_utilisateur = ?";
+        const [rows, fields] = await pool.query(sql, [eleveId]);
+        return rows;
+    } catch (err) {
+        console.error("Error fetching scolarite data from the database:", err);
+        throw err;
+    }
+}
 
 module.exports = {
-    getEleveByUserId
-
+    getEleveByUserId,
+    getScolariteByIdEleve
 };
