@@ -2,6 +2,8 @@ const express = require('express');
 const router = express.Router();
 const eleveScolariteController = require('../controller/eleveScolariteController');
 const secretariatController = require('../controller/secretatriatController');
+const enseignantController = require('../controller/enseignantScolariteController');
+const proviseurController = require('../controller/proviseurController');
 const logoutRoute = require('./logoutRoute');
 
 // Route pour afficher le formulaire de connexion
@@ -20,6 +22,12 @@ router.get('/scolarite', (req, res, next) => {
         case 3:
             secretariatController.renderListeEleve(req, res, next);
             break;
+        case 2:
+            enseignantController.renderListeEleve(req, res, next);
+            break;
+        /*case 1:
+            proviseurController.renderListeEleve(req, res, next);
+            break;*/
         // Ajoutez d'autres cas selon vos besoins
         default:
             res.status(403).send("Accès interdit.");
