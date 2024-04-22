@@ -11,6 +11,19 @@ async function getScolariteByUserId(userId) {
     }
 }
 
+
+async function getIdEnseignantReferent(userId) {
+    try {
+        const sql = "SELECT id_responsable FROM utilisateur WHERE id_utilisateur = ?";
+        const [[{ id_responsable }]] = await pool.query(sql, [userId]);
+        return id_responsable;
+    } catch (err) {
+        console.error("Error fetching data from the database:", err);
+        throw err;
+    }
+}
+
 module.exports = {
-    getScolariteByUserId
+    getScolariteByUserId,
+    getIdEnseignantReferent
 };

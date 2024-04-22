@@ -1,1 +1,35 @@
-<h1>Bienvenue, <%= userId %></h1>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scolarité de l'élève</title>
+</head>
+<body>
+    <h1>Bienvenue, <%= userId %></h1>
+    <h1>Votre référent est : <%= idEnseignantReferant %></h1>
+    
+    <h2>Liste de la scolarité :</h2>
+    <table border="1">
+        <tr>
+            <th>ID Scolarité</th>
+            <th>ID Classe</th>
+            <th>Numéro Semestre</th>
+            <th>Moyenne Semestre</th>
+            <th>Année Scolaire</th>
+            <th>ID Utilisateur</th>
+        </tr>
+        <% scolarite.forEach(function(scolariteItem) { %>
+            <tr>
+                <td><%= scolariteItem.id_scolarite %></td>
+                <td><%= scolariteItem.id_classe %></td>
+                <td><%= scolariteItem.numero_semestre %></td>
+                <td><%= scolariteItem.moyenne_semestre %></td>
+                <td><%= scolariteItem.annee_scolaire %></td>
+                <td><%= scolariteItem.id_utilisateur %></td>
+            </tr>
+        <% }); %>
+    </table>
+</body>
+</html>
