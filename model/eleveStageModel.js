@@ -1,11 +1,11 @@
 const pool = require('../config/database');
 
 
-async function getUtilisateurByLogin(id_utilisateur, mdp) {
+async function getStageById(id_utilisateur, mdp) {
     try {
 
         
-        const sql = "SELECT * FROM scolarite WHERE id_utilisateur = ? AND mdp = ?";
+        const sql = "SELECT * FROM stage WHERE id_utilisateur = ? AND mdp = ?";
 
         const [rows, fields] = await pool.query(sql, [id_utilisateur, mdp]);
         
@@ -20,6 +20,6 @@ async function getUtilisateurByLogin(id_utilisateur, mdp) {
 
 
 module.exports = {
-    getUtilisateurByLogin
+    getStageById
 
 };

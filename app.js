@@ -20,7 +20,14 @@ app.use('/css', express.static(__dirname + '/public/css'));
 
 // configuration des routes
 const loginRoute = require('./routes/loginRoute');
+const scolariteRoute = require('./routes/scolariteRoute');
+const stageRoute = require('./routes/stageRoute');
+
+
 app.use('/', loginRoute);
+app.use('/', scolariteRoute);
+app.use('/', stageRoute);
+
 
 
 // démarrage du serveur
