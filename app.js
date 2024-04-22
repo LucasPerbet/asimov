@@ -26,11 +26,14 @@ app.use(session({
 const loginRoute = require('./routes/loginRoute');
 const scolariteRoute = require('./routes/scolariteRoute');
 const stageRoute = require('./routes/stageRoute');
+const projetRoute = require('./routes/projetRoute');
 
 
 app.use('/', loginRoute);
 app.use('/', scolariteRoute);
 app.use('/', stageRoute);
+app.use('/', projetRoute);
+
 
 
 
