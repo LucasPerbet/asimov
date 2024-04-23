@@ -1,0 +1,32 @@
+
+    <%- include('header') %>
+
+    <h1>Saisir des notes</h1>
+
+    <form action="/saisirnotes" method="POST">
+        <label for="id_classe">Classe :</label>
+        <select name="id_classe" id="id_classe">
+            <option value="6">Sixième</option>
+            <option value="5">Cinquième</option>
+            <option value="4">Quatrième</option>
+            <option value="3">Troisième</option>
+        </select><br><br>
+
+        <label for="numero_semestre">Numéro du semestre :</label>
+        <select name="numero_semestre" id="numero_semestre">
+            <option value="1">Premier semestre</option>
+            <option value="2">Deuxième semestre</option>
+        </select><br><br>
+
+        <label for="moyenne_semestre">Moyenne du semestre :</label>
+        <input type="number" name="moyenne_semestre" id="moyenne_semestre" min="0" max="20" step="0.01" required><br><br>
+
+        <label for="annee_scolaire">Année scolaire :</label>
+        <input type="text" name="annee_scolaire" id="annee_scolaire" required><br><br>
+
+        <input type="hidden" name="id_utilisateur" value="<%= userId %>">
+
+        <input type="submit" value="Enregistrer">
+    </form>
+</body>
+</html>

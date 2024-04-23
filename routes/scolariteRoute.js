@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const eleveScolariteController = require('../controller/eleveScolariteController');
-const secretariatController = require('../controller/secretatriatController');
+const secretariatController = require('../controller/secretariatController');
 const enseignantController = require('../controller/enseignantScolariteController');
 const proviseurController = require('../controller/proviseurController');
 const logoutRoute = require('./logoutRoute');
@@ -25,19 +25,24 @@ router.get('/scolarite', (req, res, next) => {
         case 2:
             enseignantController.renderListeEleve(req, res, next);
             break;
-        /*case 1:
+        case 1:
             proviseurController.renderListeEleve(req, res, next);
-            break;*/
+            break;
         // Ajoutez d'autres cas selon vos besoins
         default:
             res.status(403).send("Accès interdit.");
     }
 }),
 
+// Route pour afficher le formulaire de saisie des notes
+router.get('/saisirnotes/:id', secretariatController.renderFormulaireSaisieNotes);
+
+// Route pour enregistrer les notes saisies
+router.post('/saisirnotes/:id', secretariatController.enregistrerNotes);
+
 // Route pour récupérer les données de scolarité d'un élève
 router.get('/recupererDonneesScolarite', enseignantController.getScolariteByIdEleve);
 
 router.use(logoutRoute);
-
 
 module.exports = router;

@@ -11,6 +11,17 @@ async function getEleves() {
     }
 }
 
+async function enregistrerNotes(id_classe, numero_semestre, moyenne_semestre, annee_scolaire, id_utilisateur) {
+    try {
+        const sql = "INSERT INTO scolarite (id_classe, numero_semestre, moyenne_semestre, annee_scolaire, id_utilisateur) VALUES (?, ?, ?, ?, ?)";
+        await pool.query(sql, [id_classe, numero_semestre, moyenne_semestre, annee_scolaire, id_utilisateur]);
+    } catch (err) {
+        console.error("Error inserting data into the database:", err);
+        throw err;
+    }
+}
+
 module.exports = {
-    getEleves
+    getEleves,
+    enregistrerNotes
 };
