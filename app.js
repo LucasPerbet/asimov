@@ -24,18 +24,17 @@ app.use(session({
 
 // configuration des routes
 const loginRoute = require('./routes/loginRoute');
-const scolariteRoute = require('./routes/scolariteRoute');
-const stageRoute = require('./routes/stageRoute');
-const projetRoute = require('./routes/projetRoute');
+const eleveRoute = require('./routes/eleveRoute');
+const enseignantRoute = require('./routes/enseignantRoute');
+const proviseurRoute = require('./routes/proviseurRoute');
+const secretariatRoute = require('./routes/secretariatRoute');
 
 
 app.use('/', loginRoute);
-app.use('/', scolariteRoute);
-app.use('/', stageRoute);
-app.use('/', projetRoute);
-
-
-
+app.use('/eleve/', eleveRoute);
+app.use('/enseignant/', enseignantRoute);
+app.use('/proviseur/', proviseurRoute);
+app.use('/secretariat/', secretariatRoute);
 
 
 // démarrage du serveur

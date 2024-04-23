@@ -1,21 +1,113 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Accueil</title>
     <link rel="stylesheet" href="/css/style.css">
 </head>
-<body>
-    <nav>
-        <div class="navbar">
-            <a href="#"><h1>Accueil ?</h1></a>
-        </div>
-        <ul>
-            <a href="/projet"><li>Projets</li></a>
-            <a href="/scolarite"><li>Scolarité</li></a>
-            <a href="/stage"><li>Stages</li></a>
-            <a href="/logout"><li>Déconnexion</li></a> <!-- Ajout de l'onglet Déconnexion -->
-        </ul>
-    </nav>
 
+<body>
+
+    <% const role=req.session.role; switch (role) { case 1: %>
+        <nav>
+            <div class="navbar">
+                <a href="#">
+                    <h1>Accueil Proviseur</h1>
+                </a>
+            </div>
+            <ul>
+                <a href="/proviseur/scolarite">
+                    <li>Scolarité</li>
+                </a>
+                <a href="/proviseur/projet">
+                    <li>Projets</li>
+                </a>
+                <a href="/proviseur/stage">
+                    <li>Stages</li>
+                </a>
+                <a href="/logout">
+                    <li>Déconnexion</li>
+                </a>
+            </ul>
+        </nav>
+        <% break; case 2: %>
+            <nav>
+                <div class="navbar">
+                    <a href="#">
+                        <h1>Accueil Enseignant</h1>
+                    </a>
+                </div>
+                <ul>
+                    <a href="/enseignant/scolarite">
+                        <li>Scolarité</li>
+                    </a>
+                    <a href="/enseignant/projet">
+                        <li>Projets</li>
+                    </a>
+                    <a href="/enseignant/stage">
+                        <li>Stages</li>
+                    </a>
+                    <a href="/logout">
+                        <li>Déconnexion</li>
+                    </a>
+                </ul>
+            </nav>
+            <% break; case 3: %>
+                <nav>
+                    <div class="navbar">
+                        <a href="#">
+                            <h1>Accueil Secretariat</h1>
+                        </a>
+                    </div>
+                    <ul>
+                        <a href="/secretariat/scolarite">
+                            <li>Scolarité</li>
+                        </a>
+                        <a href="/secretariat/projet">
+                            <li>Projets</li>
+                        </a>
+                        <a href="/secretariat/stage">
+                            <li>Stages</li>
+                        </a>
+                        <a href="/logout">
+                            <li>Déconnexion</li>
+                        </a>
+                    </ul>
+                </nav>
+                <% break; case 4: %>
+                    <nav>
+                        <div class="navbar">
+                            <a href="#">
+                                <h1>Accueil Eleve</h1>
+                            </a>
+                        </div>
+                        <ul>
+                            <a href="/eleve/scolarite">
+                                <li>Scolarité</li>
+                            </a>
+                            <a href="/eleve/projet">
+                                <li>Projets</li>
+                            </a>
+                            <a href="/eleve/stage">
+                                <li>Stages</li>
+                            </a>
+                            <a href="/logout">
+                                <li>Déconnexion</li>
+                            </a>
+                        </ul>
+                    </nav>
+                    <%
+                    break;
+                    default:
+                    // Cas par défaut si aucun des cas précédents n'est rencontré
+                    %>
+                    <nav>
+                        <ul>
+                            <a href="/login">
+                                <li>Connexion</li>
+                            </a> 
+                        </ul>
+                    </nav>
+                    <% break; } %>

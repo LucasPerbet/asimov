@@ -34,7 +34,7 @@ router.get('/scolarite', (req, res, next) => {
     }
 }),
 
-
+// route enseignant
 router.get('/scolarite/:idEleve', async (req, res, next) => {
     const idEleve = req.params.idEleve;
     try {
