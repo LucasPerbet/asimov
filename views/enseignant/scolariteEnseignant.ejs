@@ -42,10 +42,10 @@
     // Capturer le clic sur le bouton "Actualiser"
     document.getElementById('actualiserButton').addEventListener('click', function() {
         // Récupérer la valeur sélectionnée dans le select
-        var selectedUserId = document.getElementById('selectEleve').value;
+       const selectedUserId = document.getElementById('selectEleve').value;
         
         // Envoyer une requête au serveur pour récupérer les informations de scolarité de l'élève sélectionné
-        fetch('/scolarite/' + selectedUserId)
+        fetch('/enseignant/scolarite/' + selectedUserId)
             .then(function(response) {
                 // Vérifier si la réponse est valide (statut 200)
                 if (!response.ok) {

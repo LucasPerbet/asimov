@@ -1,5 +1,8 @@
 const pool = require('../config/database');
 
+// ----------------------------------------------------------------------------------------------//
+//---------------------------------- BLOC ENSEIGNANT SCOLARITE----------------------------------------//
+
 async function getEleveByUserId(userId) {
     try {
         const sql = "SELECT * FROM utilisateur WHERE id_responsable = ?";
@@ -22,7 +25,12 @@ async function getScolariteByIdEleve(eleveId) {
     }
 }
 
+// ----------------------------------------------------------------------------------------------//
+    //---------------------------------- BLOC ENSEIGNANT ....----------------------------------------//
+
 module.exports = {
     getEleveByUserId,
     getScolariteByIdEleve
 };
+
+

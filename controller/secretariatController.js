@@ -1,6 +1,9 @@
 const secretariatModel = require('../model/secretariatModel');
 
 const secretariatController = {
+
+    // ----------------------------------------------------------------------------------------------//
+//---------------------------------- BLOC SECRETARIAT SCOLARITE----------------------------------------//
     // Fonction qui affiche la liste des élèves
     async renderListeEleve(req, res) {
         try {
@@ -38,6 +41,9 @@ const secretariatController = {
             res.status(500).send("Une erreur s'est produite lors de l'enregistrement des notes.");
         }
     }
+
+    // ----------------------------------------------------------------------------------------------//
+//---------------------------------- BLOC SECRETARIAT ....----------------------------------------//
 };
 
 module.exports = secretariatController;

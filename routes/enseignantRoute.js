@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const enseignantController = require('../controller/enseignantScolariteController');
+const enseignantController = require('../controller/enseignantController');
 const logoutRoute = require('./logoutRoute');
 
 router.get('/scolarite',enseignantController.renderListeEleve);

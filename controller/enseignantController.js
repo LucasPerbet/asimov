@@ -1,14 +1,19 @@
-const scolariteModel = require('../model/enseignantScolariteModel');
+const enseignantModel = require('../model/enseignantModel');
 
-const enseignantScolariteController = {
-    // Fonction qui affiche la vue de la scolarite
+
+
+const enseignantController = {
+    
+// ----------------------------------------------------------------------------------------------//
+//---------------------------------- BLOC ENSEIGNANT SCOLARITE----------------------------------------//
+
     async renderListeEleve(req, res) {
         try {
             // Récupérer l'ID de l'utilisateur à partir de la session
             const userId = req.session.userId;
             const role = req.session.role;
             // Utiliser l'ID de l'utilisateur pour récupérer les informations de scolarité
-            const eleve = await scolariteModel.getEleveByUserId(userId);
+            const eleve = await enseignantModel.getEleveByUserId(userId);
             res.render('scolariteEnseignant', { userId, eleve, role });
         } catch (error) {
             console.error(error);
@@ -20,7 +25,7 @@ const enseignantScolariteController = {
     async  getScolariteByIdEleve(req, res, next, idEleve) {
         try {
             // Appeler le modèle pour récupérer les informations de scolarité de l'élève
-            const scolariteInfo = await scolariteModel.getScolariteByIdEleve(idEleve);
+            const scolariteInfo = await enseignantModel.getScolariteByIdEleve(idEleve);
             
             // Vérifier si les informations de scolarité existent pour l'élève
             if (scolariteInfo) {
@@ -35,7 +40,14 @@ const enseignantScolariteController = {
             res.status(500).send("Une erreur s'est produite lors de la récupération des données de scolarité.");
         }
     }
+
+    // ----------------------------------------------------------------------------------------------//
+    //---------------------------------- BLOC ENSEIGNANT ....----------------------------------------//
+
+
 };
 
 
-module.exports = enseignantScolariteController;
+
+
+module.exports = enseignantController;

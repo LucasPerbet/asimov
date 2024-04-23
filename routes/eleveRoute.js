@@ -1,11 +1,11 @@
 const express = require('express');
 const router = express.Router();
-const eleveScolariteController = require('../controller/eleveScolariteController');
-const eleveStageController = require('../controller/eleveStageController');
+const eleveController = require('../controller/eleveController');
 const logoutRoute = require('./logoutRoute');
 
-router.get('/scolarite', eleveScolariteController.renderScolarite);
-router.get('/stage', eleveStageController.renderStage);
+router.get('/scolarite', eleveController.renderScolarite);
+router.get('/stage', eleveController.renderStage);
+router.get('/projet', eleveController.renderProjet);
 
 router.use(logoutRoute);
 

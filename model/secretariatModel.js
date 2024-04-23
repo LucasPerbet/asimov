@@ -1,5 +1,7 @@
 const pool = require('../config/database');
 
+// ----------------------------------------------------------------------------------------------//
+//---------------------------------- BLOC SECRETARIAT SCOLARITE----------------------------------------//
 async function getEleves() {
     try {
         const sql = "SELECT * FROM utilisateur WHERE id_role = 4";
@@ -20,6 +22,9 @@ async function enregistrerNotes(id_classe, numero_semestre, moyenne_semestre, an
         throw err;
     }
 }
+
+// ----------------------------------------------------------------------------------------------//
+//---------------------------------- BLOC SECRETARIAT ....----------------------------------------//
 
 module.exports = {
     getEleves,
