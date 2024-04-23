@@ -34,14 +34,18 @@ router.get('/scolarite', (req, res, next) => {
     }
 }),
 
-// Route pour afficher le formulaire de saisie des notes
-router.get('/saisirnotes/:id', secretariatController.renderFormulaireSaisieNotes);
 
-// Route pour enregistrer les notes saisies
-router.post('/saisirnotes/:id', secretariatController.enregistrerNotes);
+router.get('/scolarite/:idEleve', async (req, res, next) => {
+    const idEleve = req.params.idEleve;
+    try {
+        // Appeler le contrôleur pour récupérer les informations de scolarité de l'élève en passant l'id de l'élève
+        await enseignantController.getScolariteByIdEleve(req, res, next, idEleve);
+    } catch (error) {
+        console.error("Erreur lors de la récupération des informations de scolarité de l'élève :", error);
+        res.status(500).send("Une erreur s'est produite lors de la récupération des informations de scolarité de l'élève.");
+    }
+});
 
-// Route pour récupérer les données de scolarité d'un élève
-router.get('/recupererDonneesScolarite', enseignantController.getScolariteByIdEleve);
 
 router.use(logoutRoute);
 

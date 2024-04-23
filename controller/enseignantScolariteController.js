@@ -16,16 +16,25 @@ const enseignantScolariteController = {
     },
 
     // Fonction pour récupérer les données de scolarité d'un élève
-    async getScolariteByIdEleve(req, res) {
+    async  getScolariteByIdEleve(req, res, next, idEleve) {
         try {
-            const eleveId = req.query.id_utilisateur;
-            const scolariteData = await scolariteModel.getScolariteByIdEleve(eleveId);
-            console.log(scolariteData);
+            // Appeler le modèle pour récupérer les informations de scolarité de l'élève
+            const scolariteInfo = await scolariteModel.getScolariteByIdEleve(idEleve);
+            
+            // Vérifier si les informations de scolarité existent pour l'élève
+            if (scolariteInfo) {
+                // Envoyer les informations de scolarité en tant que réponse
+                res.json(scolariteInfo);
+            } else {
+                // Si aucune information de scolarité n'est trouvée, envoyer un message approprié
+                res.status(404).send("Aucune information de scolarité trouvée pour cet élève.");
+            }
         } catch (error) {
-            console.error(error);
+            console.error("Erreur lors de la récupération des informations de scolarité :", error);
             res.status(500).send("Une erreur s'est produite lors de la récupération des données de scolarité.");
         }
     }
 };
+
 
 module.exports = enseignantScolariteController;
