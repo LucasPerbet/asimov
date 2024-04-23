@@ -24,21 +24,58 @@
 
 
     <h2>Séléctionnez un élève pour afficher ses moyennes :</h2>
-    <select id="selectEleve" name="eleve" onchange="envoyerValeur()">
+    <select id="selectEleve" name="eleve" >
         <% for (var i = 0; i < eleve.length; i++) { %>
           <option value="<%= eleve[i].id_utilisateur %>"><%= eleve[i].nom %></option>
         <% } %>
       </select>
-      
-      
-      <script>
-        function envoyerValeur() {
-          const selectElement = document.getElementById("selectEleve");
-          const selectedValue = selectElement.value;
-      
-          // Envoyer la valeur sélectionnée au serveur
-          fetch(`/recupererDonneesScolarite?id_utilisateur=${selectedValue}`)
-        }
-      </script>
+
+    <button id="actualiserButton">Actualiser</button>
+    
+<!-- Zones pour afficher les informations de scolarité de l'élève sélectionné -->
+<h2>Informations de scolarité de l'élève sélectionné :</h2>
+<div id="scolariteInfos">
+    <!-- Les informations de scolarité seront insérées ici -->
+</div>
+
+<script>
+    // Capturer le clic sur le bouton "Actualiser"
+    document.getElementById('actualiserButton').addEventListener('click', function() {
+        // Récupérer la valeur sélectionnée dans le select
+        var selectedUserId = document.getElementById('selectEleve').value;
+        
+        // Envoyer une requête au serveur pour récupérer les informations de scolarité de l'élève sélectionné
+        fetch('/scolarite/' + selectedUserId)
+            .then(function(response) {
+                // Vérifier si la réponse est valide (statut 200)
+                if (!response.ok) {
+                    throw new Error('Erreur lors de la récupération des informations de scolarité');
+                }
+                // Transformer la réponse en JSON
+                return response.json();
+            })
+            .then(function(scolariteInfos) {
+                // Créer une chaîne HTML pour afficher les informations de scolarité
+                let scolariteHTML = '<ul>';
+                scolariteInfos.forEach(function(scolariteInfo) {
+                    scolariteHTML += '<li>';
+                    scolariteHTML += 'Classe: ' + scolariteInfo.id_classe + ', ';
+                    scolariteHTML += 'Semestre: ' + scolariteInfo.numero_semestre + ', ';
+                    scolariteHTML += 'Moyenne: ' + scolariteInfo.moyenne_semestre + ', ';
+                    scolariteHTML += 'Année scolaire: ' + scolariteInfo.annee_scolaire;
+                    scolariteHTML += '</li>';
+                });
+                scolariteHTML += '</ul>';
+                
+                // Afficher les informations de scolarité dans la section dédiée sur la page HTML
+                document.getElementById('scolariteInfos').innerHTML = scolariteHTML;
+            })
+            .catch(function(error) {
+                console.error("Erreur lors de la récupération des informations de scolarité :", error);
+            });
+    });
+</script>
+
+  
 </body>
 </html>
