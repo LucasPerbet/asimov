@@ -5,7 +5,8 @@ const stageController = {
 
     // Fonction qui affiche la vue de la scolarite
     async renderStage(req, res) {
-        res.render('stageEleve');
+        const role = req.session.role;
+        res.render('stageEleve', {role});
     },
 
 }

@@ -6,7 +6,8 @@ const secretariatController = {
         try {
             // Récupérer la liste des élèves
             const eleves = await secretariatModel.getEleves();
-            res.render('scolariteSecretariat', { eleves });
+            const role = req.session.role;
+            res.render('scolariteSecretariat', { eleves, role });
         } catch (error) {
             console.error(error);
             res.status(500).send("Une erreur s'est produite lors du chargement de la liste des élèves.");
@@ -17,7 +18,8 @@ const secretariatController = {
     async renderFormulaireSaisieNotes(req, res) {
         try {
             const id_utilisateur = req.params.id;
-            res.render('saisirNotes', { id_utilisateur });
+            const role = req.session.role;
+            res.render('saisirNotes', { id_utilisateur, role });
         } catch (error) {
             console.error(error);
             res.status(500).send("Une erreur s'est produite lors du chargement du formulaire de saisie des notes.");
@@ -29,7 +31,8 @@ const secretariatController = {
         try {
             const { id_classe, numero_semestre, moyenne_semestre, annee_scolaire, id_utilisateur } = req.body;
             await secretariatModel.enregistrerNotes(id_classe, numero_semestre, moyenne_semestre, annee_scolaire, id_utilisateur);
-            res.redirect('/scolarite');
+            const role = req.session.role;
+            res.redirect('/scolarite',{role});
         } catch (error) {
             console.error(error);
             res.status(500).send("Une erreur s'est produite lors de l'enregistrement des notes.");

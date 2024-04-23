@@ -6,9 +6,10 @@ const enseignantScolariteController = {
         try {
             // Récupérer l'ID de l'utilisateur à partir de la session
             const userId = req.session.userId;
+            const role = req.session.role;
             // Utiliser l'ID de l'utilisateur pour récupérer les informations de scolarité
             const eleve = await scolariteModel.getEleveByUserId(userId);
-            res.render('scolariteEnseignant', { userId, eleve });
+            res.render('scolariteEnseignant', { userId, eleve, role });
         } catch (error) {
             console.error(error);
             res.status(500).send("Une erreur s'est produite lors du chargement de la page de la scolarité.");

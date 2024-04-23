@@ -24,6 +24,7 @@ app.use(session({
 
 // configuration des routes
 const loginRoute = require('./routes/loginRoute');
+const logoutRoute = require('./routes/logoutRoute');
 const eleveRoute = require('./routes/eleveRoute');
 const enseignantRoute = require('./routes/enseignantRoute');
 const proviseurRoute = require('./routes/proviseurRoute');
@@ -31,6 +32,7 @@ const secretariatRoute = require('./routes/secretariatRoute');
 
 
 app.use('/', loginRoute);
+app.use('/',logoutRoute);
 app.use('/eleve/', eleveRoute);
 app.use('/enseignant/', enseignantRoute);
 app.use('/proviseur/', proviseurRoute);

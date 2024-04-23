@@ -41,7 +41,7 @@ const loginController = {
                         console.log("Erreur")
                 }
                 // On render la vue en fonction du role, et transmet les parametres que l'on souhaite
-                res.render(vueAccueil, { nom: utilisateur.nom, prenom: utilisateur.prenom,  role: utilisateur.libelle_role}); 
+                res.render(vueAccueil, { nom: utilisateur.nom, prenom: utilisateur.prenom,  role: utilisateur.id_role}); 
             } else {
                 res.send("Identifiant ou mot de passe incorrect.");
             }

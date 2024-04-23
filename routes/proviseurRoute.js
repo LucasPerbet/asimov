@@ -3,7 +3,7 @@ const router = express.Router();
 const proviseurController = require('../controller/proviseurController');
 const logoutRoute = require('./logoutRoute');
 
-router.get('/scolarite',proviseurController.renderListeEleve);
+//router.get('/scolarite',proviseurController.renderListeEleve);
 
 router.use(logoutRoute);
 

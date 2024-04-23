@@ -5,10 +5,10 @@ const projetController = {
 
             switch (role) {
                 case 1:
-                    res.render('projetProviseur');
+                    res.render('projetProviseur',{role});
                     break;
                 case 4:
-                    res.render('projetEleve');
+                    res.render('projetEleve',{role});
                     break;
                 default:
                     res.status(403).send("Accès interdit.");
