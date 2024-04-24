@@ -13,8 +13,9 @@ const eleveController = {
 
             // Utiliser l'ID de l'utilisateur pour récupérer les informations de scolarité
             const scolarite = await eleveModel.getScolariteByUserId(userId);
-            const idEnseignantReferant = await eleveModel.getIdEnseignantReferent(userId);
-            res.render('scolariteEleve', { scolarite, userId, idEnseignantReferant, role });
+            const enseignantReferant = await eleveModel.getIdEnseignantReferent(userId);
+            
+            res.render('scolariteEleve', { scolarite, userId, enseignantReferant, role });
         } catch (error) {
             console.error(error);
             res.status(500).send("Une erreur s'est produite lors du chargement de la page de la scolarité.");
@@ -32,11 +33,12 @@ const eleveController = {
 
     // ----------------------------------------------------------------------------------------------//
     //---------------------------------- BLOC ELEVE PROJET----------------------------------------//
-    renderProjet(req, res) {
+    async renderProjet(req, res) {
         try {
             const role = req.session.role;
-            // AJOUTER MODEL ET DONNEES EN FONCTION DES BESOINS
-            res.render('projetEleve', { role });
+            const projets = await eleveModel.getProjet();
+            
+            res.render('projetEleve', { role , projets});
         }
         catch (error) {
             console.error(error);

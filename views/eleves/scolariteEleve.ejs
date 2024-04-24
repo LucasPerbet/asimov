@@ -1,25 +1,30 @@
 <%- include('header') %>
 
-    <h1>Votre référent est : <%= idEnseignantReferant %></h1>
+<% if (enseignantReferant && enseignantReferant.length > 0) { %>
+    <h1>Votre référent est : <%= enseignantReferant[0].prenom_responsable %> <%= enseignantReferant[0].nom_responsable %></h1>
+<% } else { %>
+    <p>Vous n'avez pas d'enseignant référent attribué.</p>
+<% } %>
+
+
     
     <h2>Liste de la scolarité :</h2>
     <table border="1">
         <tr>
-            <th>ID Scolarité</th>
-            <th>ID Classe</th>
+            <th>Nom de l'élève</th>
+            <th>Classe</th>
             <th>Numéro Semestre</th>
             <th>Moyenne Semestre</th>
             <th>Année Scolaire</th>
-            <th>ID Utilisateur</th>
+
         </tr>
         <% scolarite.forEach(function(scolariteItem) { %>
             <tr>
-                <td><%= scolariteItem.id_scolarite %></td>
-                <td><%= scolariteItem.id_classe %></td>
+                <td><%= scolariteItem.nom %></td>
+                <td><%= scolariteItem.libelle_classe %></td>
                 <td><%= scolariteItem.numero_semestre %></td>
                 <td><%= scolariteItem.moyenne_semestre %></td>
                 <td><%= scolariteItem.annee_scolaire %></td>
-                <td><%= scolariteItem.id_utilisateur %></td>
             </tr>
         <% }); %>
     </table>

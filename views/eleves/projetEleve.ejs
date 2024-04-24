@@ -1,2 +1,33 @@
 <%- include('header') %>
-<p>Projet eleve</p>
+<p>Projet élève</p>
+
+<h1>Liste des projets</h1>
+
+<table border="1">
+    <tr>
+        <th>ID Projet</th>
+        <th>Nom Projet</th>
+        <th>Description Projet</th>
+        <th>Date de début</th>
+        <th>Date de fin</th>
+        <th>Responsable</th>
+    </tr>
+    <% if (projets && projets.length) { %>
+        <% projets.forEach(function(projet) { %>
+            <tr>
+                <td><%= projet.id_projet %></td>
+                <td><%= projet.nom_projet %></td>
+                <td><%= projet.description_projet %></td>
+                <td><%= projet.date_debut %></td>
+                <td><%= projet.date_fin %></td>
+                <!-- Assuming you have a way to fetch the name of the responsible person from their ID -->
+                <!-- Replace "id_responsableprojet" with the actual responsible person's name -->
+                <td><%= projet.nom_responsable%></td>
+            </tr>
+        <% }); %>
+    <% } else { %>
+        <tr>
+            <td colspan="6">Aucun projet disponible</td>
+        </tr>
+    <% } %>
+</table>

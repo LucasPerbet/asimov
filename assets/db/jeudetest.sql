@@ -20,7 +20,8 @@ VALUES
 ('test', 'Michaud', 'Pierre', '2005-03-10', 6, 4, 2), -- Eleve
 ('test', 'Benaboura', 'Aron', '2004-03-10', 5, 4, 2), -- Eleve
 ('test', 'Perbet', 'Lucas', '1997-03-10', 4, 4, 2), -- Eleve
-('test', 'Ait-Lhoussaine', 'Ismael', '2001-03-10', 3, 4, 2); -- Eleve
+('test', 'Ait-Lhoussaine', 'Ismael', '2001-03-10', 3, 4, 2), -- Eleve
+('test', 'Lagache', 'François', '1985-10-20', 0, 2, 0);
 
 
 INSERT INTO scolarite (id_classe, numero_semestre, moyenne_semestre, annee_scolaire, id_utilisateur) VALUES
@@ -56,3 +57,21 @@ INSERT INTO scolarite (id_classe, numero_semestre, moyenne_semestre, annee_scola
 (4, 2, 15.7, '2022-2023', 7),
 (3, 1, 16.8, '2023-2024', 7),
 (3, 2, 17.5, '2023-2024', 7);
+
+-- Insertion des données pour la table `projet`
+INSERT INTO `projet` (`nom_projet`, `description_projet`, `date_debut`, `date_fin`, `id_responsableprojet`, `estvalide`) VALUES
+('Projet A', 'Description du Projet A', '2024-04-01', '2024-06-30', 4, 0),
+('Projet B', 'Description du Projet B', '2024-05-15', '2024-08-15', 5, 0),
+('Projet C', 'Description du Projet C', '2024-03-10', '2024-05-10', 6, 0),
+('Projet D', 'Description du Projet D', '2024-03-10', '2024-05-10', 7, 0);
+
+-- Insertion des données pour la table `equipe_projet`
+INSERT INTO `equipe_projet` (`id_projet`, `id_utilisateur`) VALUES
+(1, 4),
+(1, 5),
+(2, 5),
+(2, 6),
+(3, 6),
+(3, 7),
+(4,4),
+(4,7);
