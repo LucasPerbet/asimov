@@ -8,6 +8,12 @@ router.get('/projet', proviseurController.renderProjet);
 router.post('/validenote', proviseurController.valideNote);
 router.post('/modifienote', proviseurController.modifieNote);
 
+router.get('/accueil', (req, res) => {
+    res.render('accueilProviseur'); 
+});
+
+
+
 
 
 router.use(logoutRoute);
