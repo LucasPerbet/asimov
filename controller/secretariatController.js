@@ -37,8 +37,9 @@ const secretariatController = {
             await secretariatModel.enregistrerNotes(id_classe, numero_semestre, moyenne_semestre, annee_scolaire, id_utilisateur);
             const role = req.session.role;
             const eleves = await secretariatModel.getEleves();
+            const enseignants = await secretariatModel.getEnseignants();
 
-            res.render('scolariteSecretariat',{role, eleves});
+            res.render('scolariteSecretariat',{role, eleves, enseignants});
         } catch (error) {
             console.error(error);
             res.status(500).send("Une erreur s'est produite lors de l'enregistrement des notes.");

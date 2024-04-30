@@ -6,19 +6,17 @@
     <p>Vous n'avez pas d'enseignant référent attribué.</p>
 <% } %>
 
-
-    
-    <h2>Liste de la scolarité :</h2>
-    <table border="1">
-        <tr>
-            <th>Nom de l'élève</th>
-            <th>Classe</th>
-            <th>Numéro Semestre</th>
-            <th>Moyenne Semestre</th>
-            <th>Année Scolaire</th>
-
-        </tr>
-        <% scolarite.forEach(function(scolariteItem) { %>
+<h2>Liste de la scolarité :</h2>
+<table border="1">
+    <tr>
+        <th>Nom de l'élève</th>
+        <th>Classe</th>
+        <th>Numéro Semestre</th>
+        <th>Moyenne Semestre</th>
+        <th>Année Scolaire</th>
+    </tr>
+    <% scolarite.forEach(function(scolariteItem) { %>
+        <% if (scolariteItem.estvalide === 0) { %>
             <tr>
                 <td><%= scolariteItem.nom %></td>
                 <td><%= scolariteItem.libelle_classe %></td>
@@ -26,7 +24,8 @@
                 <td><%= scolariteItem.moyenne_semestre %></td>
                 <td><%= scolariteItem.annee_scolaire %></td>
             </tr>
-        <% }); %>
-    </table>
+        <% } %>
+    <% }); %>
+</table>
 </body>
 </html>
