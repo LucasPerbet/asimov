@@ -26,6 +26,21 @@ async function valideNote(id_scolarite) {
     }
 }
 
+async function modifieNote(note, id_scolarite) {
+    try {
+        const sql = "UPDATE scolarite SET moyenne_semestre = ? WHERE id_scolarite = ? ";
+        await pool.query(sql, [note, id_scolarite]);
+
+        const sql2 = "UPDATE scolarite SET estvalide = 0 WHERE id_scolarite = ? ";
+        await pool.query(sql2, id_scolarite);
+
+        return true;
+    } catch (err) {
+        console.error("Error fetching data from the database:", err);
+        throw err;
+    }
+}
+
 
 
 
@@ -33,6 +48,7 @@ async function valideNote(id_scolarite) {
 
 module.exports = {
     getAllScolarites,
-    valideNote
+    valideNote,
+    modifieNote
 
 };

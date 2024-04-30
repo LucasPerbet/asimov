@@ -6,6 +6,8 @@ const logoutRoute = require('./logoutRoute');
 router.get('/scolarite', proviseurController.renderScolarite);
 router.get('/projet', proviseurController.renderProjet);
 router.post('/validenote', proviseurController.valideNote);
+router.post('/modifienote', proviseurController.modifieNote);
+
 
 
 router.use(logoutRoute);

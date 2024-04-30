@@ -11,6 +11,7 @@
         <th>Moyenne Semestre</th>
         <th>Année Scolaire</th>
         <th>Validation</th>
+        <th>Modifier note</th>
 
 
     </tr>
@@ -23,14 +24,22 @@
                 <td><%= scolariteItem.annee_scolaire %></td>
 
                 <% if (scolariteItem.estvalide === 0) { %>
-                <td> <form action="/proviseur/validenote" method="post">
-                    
-                    <input type="hidden" name="id_scolarite" value="<%= scolariteItem.id_scolarite %>">
-                    <input type="submit" value="Valider">
-                </form></td>
+                <td> 
+                    <form action="/proviseur/validenote" method="post">
+                        <input type="hidden" name="id_scolarite" value="<%= scolariteItem.id_scolarite %>">
+                        <input type="submit" value="Valider">
+                    </form>
+                </td>
                 <% }else { %>
                 <td>Validé</td>
                 <% } %>
+                <td>
+                    <form action="/proviseur/modifienote" method="post">
+                        <input type="text" name="note">
+                        <input type="hidden" name="id_scolarite" value="<%= scolariteItem.id_scolarite %>">
+                        <input type="submit" value="Modifier la note">
+                    </form>
+                </td>
 
 
 
