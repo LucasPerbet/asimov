@@ -6,7 +6,7 @@
     <p>Vous n'avez pas d'enseignant référent attribué.</p>
 <% } %>
 
-<h2>Liste de la scolarité :</h2>
+<h2>Liste des notes validées :</h2>
 <table border="1">
     <tr>
         <th>Nom de l'élève</th>
@@ -16,7 +16,7 @@
         <th>Année Scolaire</th>
     </tr>
     <% scolarite.forEach(function(scolariteItem) { %>
-        <% if (scolariteItem.estvalide === 0) { %>
+        <% if (scolariteItem.estvalide === 1) { %>
             <tr>
                 <td><%= scolariteItem.nom %></td>
                 <td><%= scolariteItem.libelle_classe %></td>
