@@ -1,3 +1,41 @@
 <%- include('header') %>
 
 
+
+<h2>Liste de la scolarité :</h2>
+<table border="1">
+    <tr>
+        <th>Nom de l'élève</th>
+        <th>Classe</th>
+        <th>Numéro Semestre</th>
+        <th>Moyenne Semestre</th>
+        <th>Année Scolaire</th>
+        <th>Validation</th>
+
+
+    </tr>
+    <% scolarite.forEach(function(scolariteItem) { %>
+            <tr>
+                <td><%= scolariteItem.nom %></td>
+                <td><%= scolariteItem.libelle_classe %></td>
+                <td><%= scolariteItem.numero_semestre %></td>
+                <td><%= scolariteItem.moyenne_semestre %></td>
+                <td><%= scolariteItem.annee_scolaire %></td>
+
+                <% if (scolariteItem.estvalide === 0) { %>
+                <td> <form action="/proviseur/validenote" method="post">
+                    
+                    <input type="hidden" name="id_scolarite" value="<%= scolariteItem.id_scolarite %>">
+                    <input type="submit" value="Valider">
+                </form></td>
+                <% }else { %>
+                <td>Validé</td>
+                <% } %>
+
+
+
+            </tr>
+    <% }); %>
+</table>
+</body>
+</html>

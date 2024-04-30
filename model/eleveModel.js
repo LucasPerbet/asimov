@@ -5,7 +5,7 @@ const pool = require('../config/database');
 
 async function getScolariteByUserId(userId) {
     try {
-        const sql = "SELECT scolarite.numero_semestre, scolarite.moyenne_semestre, scolarite.annee_scolaire, classe.libelle_classe, utilisateur.nom FROM scolarite JOIN utilisateur ON scolarite.id_utilisateur = utilisateur.id_utilisateur JOIN classe ON scolarite.id_classe = classe.id_classe WHERE scolarite.id_utilisateur = ?";
+        const sql = "SELECT scolarite.estvalide, scolarite.numero_semestre, scolarite.moyenne_semestre, scolarite.annee_scolaire, classe.libelle_classe, utilisateur.nom FROM scolarite JOIN utilisateur ON scolarite.id_utilisateur = utilisateur.id_utilisateur JOIN classe ON scolarite.id_classe = classe.id_classe WHERE scolarite.id_utilisateur = ?";
 
         const [rows, fields] = await pool.query(sql, [userId]);
         return rows;
