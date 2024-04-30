@@ -8,5 +8,4 @@ router.get('/stage', eleveController.renderStage);
 router.get('/projet', eleveController.renderProjet);
 
 router.use(logoutRoute);
-
 module.exports = router;

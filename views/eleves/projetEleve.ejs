@@ -11,6 +11,7 @@
         <th>Date de début</th>
         <th>Date de fin</th>
         <th>Responsable</th>
+        <th>Voir équipe</th>
     </tr>
     <% if (projets && projets.length) { %>
         <% projets.forEach(function(projet) { %>
@@ -20,9 +21,8 @@
                 <td><%= projet.description_projet %></td>
                 <td><%= projet.date_debut %></td>
                 <td><%= projet.date_fin %></td>
-                <!-- Assuming you have a way to fetch the name of the responsible person from their ID -->
-                <!-- Replace "id_responsableprojet" with the actual responsible person's name -->
                 <td><%= projet.nom_responsable%></td>
+                <td><input type="button" value="Voir"></td>
             </tr>
         <% }); %>
     <% } else { %>
