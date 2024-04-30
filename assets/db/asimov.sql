@@ -97,6 +97,7 @@ CREATE TABLE IF NOT EXISTS `scolarite` (
   `moyenne_semestre` decimal(8,2) NOT NULL,
   `annee_scolaire` varchar(255) NOT NULL,
   `id_utilisateur` bigint NOT NULL,
+  `estvalide` tinyint(1) DEFAULT '0',
   PRIMARY KEY (`id_scolarite`),
   KEY `id_utilisateur` (`id_utilisateur`),
   KEY `id_classe` (`id_classe`), -- Ajout de cette ligne pour déclarer la clé étrangère `id_classe`
