@@ -38,6 +38,8 @@ app.use('/eleve/', eleveRoute);
 app.use('/enseignant/', enseignantRoute);
 app.use('/proviseur/', proviseurRoute);
 app.use('/secretariat/', secretariatRoute);
+app.use('/api', apiRoute);
+
 
 
 
