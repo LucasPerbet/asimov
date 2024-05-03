@@ -29,6 +29,7 @@ const eleveRoute = require('./routes/eleveRoute');
 const enseignantRoute = require('./routes/enseignantRoute');
 const proviseurRoute = require('./routes/proviseurRoute');
 const secretariatRoute = require('./routes/secretariatRoute');
+const apiRoute = require('./routes/apiRoute');
 
 
 app.use('/', loginRoute);
@@ -37,6 +38,8 @@ app.use('/eleve/', eleveRoute);
 app.use('/enseignant/', enseignantRoute);
 app.use('/proviseur/', proviseurRoute);
 app.use('/secretariat/', secretariatRoute);
+app.use('/api', apiRoute);
+
 
 
 // démarrage du serveur
