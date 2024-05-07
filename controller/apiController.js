@@ -21,10 +21,9 @@ async function listEleve(req, res) {
     try {
         // Récupérer la liste des élèves
         const eleves = await secretariatModel.getEleves();
-        const enseignants = await secretariatModel.getEnseignants();
 
-        if(eleves && enseignants) {
-            res.status(200).json({eleves, enseignants});  
+        if(eleves) {
+            res.status(200).json({eleves});  
         } else {
             res.status(404).json({ message: "Données non trouvées" });
         }
