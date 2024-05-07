@@ -1,6 +1,6 @@
 const loginModel = require('../model/loginModel');
+const eleveModel = require('../model/eleveModel');
 const secretariatModel = require('../model/secretariatModel');
-
 
 async function login(req, res) {
     const { id, password } = req.body;
@@ -35,9 +35,21 @@ async function listEleve(req, res) {
     }
 }
 
-
+async function noteEleve(req, res) {
+    try {
+        const userId = req.params.id;
+        console.log(userId)
+        // Utiliser l'ID de l'utilisateur pour récupérer les informations de scolarité
+        const scolarite = await eleveModel.getScolariteByUserId(userId);
+        res.status(200).json({scolarite});  
+    } catch (error) {
+        console.error(error);
+        res.status(500).send("Une erreur s'est produite lors du chargement de la page de la scolarité.");
+    }
+}
 
 module.exports = {
     login,
-    listEleve
+    listEleve,
+    noteEleve
 };
